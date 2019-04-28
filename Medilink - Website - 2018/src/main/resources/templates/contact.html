@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <!--Import Fragment-->
+    <div th:insert="/page-fragments :: imports"></div>
+    <title>Contact</title>
+</head>
+<body>
+
+<!--Header Fragment-->
+<div th:insert="/page-fragments :: header('contact')"></div>
+
+<!--Body-->
+<div class="container">
+    <div class="contact-page">
+        <h1 th:text="#{headline_contact}"></h1>
+        <div class="description">
+            <p th:text="#{description.contact.p1}"></p>
+            <p th:text="#{description.contact.p2}"></p>
+            <p th:text="#{description.contact.p3}"></p>
+        </div>
+        <div class="contact center">
+            <p class="contact-row">
+                <span class="pill-custom blue left">Mail</span>
+                <span class="pill-custom green right"><a href="mailto:medilink@medilink.dk">medilink@medilink.dk</a></span>
+            </p>
+            <p class="contact-row">
+                <span class="pill-custom blue left">Phone number</span>
+                <span class="pill-custom grey right">(+45) 7022 3015</span>
+            </p>
+            <p class="contact-row">
+                <span class="pill-custom blue left">Address</span>
+                <span class="pill-custom grey right">Gammelmosevej 176 A DK-2800 Lyngby</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!--Footer Fragment-->
+<div th:insert="/page-fragments :: footer"></div>
+
+</body>
+</html>

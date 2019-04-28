@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <!--Import Fragment-->
+    <div th:insert="/page-fragments :: imports"></div>
+
+</head>
+<body>
+
+<div th:fragment="header(activePage)">
+    <ul class="nav nav-pills nav-fill">
+        <li th:class="'nav-item'  + ${activePage == 'index' ? ' item-logo' : ''}">
+            <a th:class="'nav-link logo'" href="/"><img src="images/medilink.png"></a>
+        </li>
+        <li class="nav-item">
+             <a th:text="#{products}" th:class="'nav-link' + ${activePage == 'products' ? ' active' : ''}" href="products"></a>
+        </li>
+        <li class="nav-item">
+            <a th:text="#{team_members}" th:class="'nav-link' + ${activePage == 'team' ? ' active' : ''}" href="team">Team Members</a>
+        </li>
+        <li class="nav-item">
+            <a th:text="#{contact}" th:class="'nav-link' + ${activePage == 'contact' ? ' active' : ''}" href="contact">Contact</a>
+        </li>
+        <li class="nav-item">
+            <a th:class="'nav-link' + ${activePage == 'faq' ? ' active' : ''}" href="faq">FAQ</a>
+        </li>
+        <li class="nav-item">
+            <a th:text="#{news}" th:class="'nav-link' + ${activePage == 'news' ? ' active' : ''}" href="news">News</a>
+        </li>
+        <li>
+            <form action="/search" method="post">
+                <input type="text" name="q" class="form-control search-custom" th:placeholder="#{search_product}">
+            </form>
+        </li>
+        <li class="nav-item">
+            <div class="btn-group drop-down-custom">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                th:text="${#locale.displayName}"></button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/(lang=${#locale.ENGLISH})}" th:text="${#locale.ENGLISH.displayName}"></a>
+                    <a class="dropdown-item" th:href="@{/(lang=${#locale.forLanguageTag('da')})}" th:text="${#locale.forLanguageTag('da').displayName}"></a>
+                    <!--<a class="dropdown-item" th:href="@{/(lang=${#locale.forLanguageTag('es')})}" th:text="${#locale.forLanguageTag('es').displayName}"></a>-->
+                    <!--<a class="dropdown-item" th:href="@{/(lang=${#locale.forLanguageTag('pt')})}" th:text="${#locale.forLanguageTag('pt').displayName}"></a>-->
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div th:fragment="footer" class="footer">
+    <div class="footer-custom">
+        <div class="row">
+            <div class="col">
+                <div class="footer-left">
+                    <p th:text="#{footer_desc}"></p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="footer-right">
+                    <ul>
+                        <li>
+                            <img src="images/li-1.png" class="icon">
+                            <a href="https://www.linkedin.com/company/medilink-a-s/" target="_blank">
+                                <span>LinkedIn</span>
+                            </a>
+                        </li>
+                        <li>
+                            <img src="images/rsz_hydrozid.png" class="icon">
+                            <a href="https://hydrozid.com/en/" target="_blank">
+                                <span>Hydrozid</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="imports">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</div>
+
+</body>
+</html>

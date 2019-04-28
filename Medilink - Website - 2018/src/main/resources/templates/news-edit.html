@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <!--Import Fragment-->
+    <div th:insert="/page-fragments :: imports"></div>
+    <title th:text="${newsItem.id == -1 ? 'Create News Article' : 'Edit News Article'}"></title>
+</head>
+<body>
+
+<!--Header Fragment-->
+<div th:insert="/page-fragments :: header('news')"></div>
+
+<!--Body-->
+<div class="container">
+    <div class="login-page">
+        <h1 th:text="${newsItem.id == -1 ? 'Create the news article' : 'Edit the news article'}"></h1>
+        <div class="login center edit">
+            <form action="/news-edit" th:object="${newsItem}" method="post" class="edit-form">
+                <input type="hidden" th:field="*{id}" class="form-control edit-custom">
+                <h5>Title</h5>
+                <input type="text" th:field="*{title}" required class="form-control edit-custom">
+                <h5>Description</h5>
+                <textarea type="text" th:field="*{description}" required class="form-control edit-custom"></textarea>
+                <h5>Image URL</h5>
+                <input type="url" th:field="*{imgPath}" class="form-control edit-custom">
+                <button class="btn btn-primary" type="submit">Save</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!--Footer Fragment-->
+<div th:insert="/page-fragments :: footer"></div>
+
+</body>
+</html>

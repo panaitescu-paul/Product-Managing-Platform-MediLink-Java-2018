@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <!--Import Fragment-->
+    <div th:insert="/page-fragments :: imports"></div>
+    <title>Products</title>
+</head>
+<body>
+
+<!--Header Fragment-->
+<div th:insert="/page-fragments :: header('products')"></div>
+
+<!--Body-->
+<div class="container">
+    <div class="product-page">
+        <h1 th:text="#{headline_products}"></h1>
+        <div th:if="${admin}" class="buttons">
+            <a href="/product-add" class="btn btn-success">Add Product</a>
+        </div>
+        <th:block th:if="${!productsList.isEmpty()}">
+            <th:block th:each="product : ${productsList}">
+                <th:block th:if="${product}">
+                    <div class="card products">
+                        <img th:src="${!product.imgPath.equals('') ? product.imgPath : 'images/product.png'}" alt="Image" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${product.name}"></h5>
+                            <p class="card-text" th:text="${product.description}">....</p>
+                            <a th:href="@{/product(id=${product.id})}" class="btn btn-primary">Read More...</a>
+                            <div th:if="${admin}">
+                                <a th:href="@{/product-edit(id=${product.id})}" class="btn btn-warning">Edit</a>
+                                <a th:href="@{/product-delete(id=${product.id})}" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+            </th:block>
+        </th:block>
+        <th:block th:unless="${!productsList.isEmpty()}">
+            <p>No matching products found</p>
+        </th:block>
+    </div>
+</div>
+
+<!--Footer Fragment-->
+<div th:insert="/page-fragments :: footer"></div>
+<script>
+    $(document).ready(function() {
+        alert( "Confirm you are a patient/specialist:" );
+    });
+</script>
+</body>
+</html>

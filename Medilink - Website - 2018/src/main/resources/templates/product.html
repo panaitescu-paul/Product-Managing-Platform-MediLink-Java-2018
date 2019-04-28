@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <!--Import Fragment-->
+    <div th:insert="/page-fragments :: imports"></div>
+    <title>Product</title>
+</head>
+<body>
+
+<!--Header Fragment-->
+<div th:insert="/page-fragments :: header('products')"></div>
+
+<!--Body-->
+<div class="container">
+    <div class="card card-big">
+        <img th:src="${!productItem.imgPath.equals('') ? productItem.imgPath : 'images/product.png'}" alt="Image" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${productItem.name}"> </h5>
+            <tr th:each="dv: ${productItem.description}" class="card-text">
+                <div class="text" th:utext="${#strings.unescapeJava(#strings.replace(#strings.escapeJava(dv),'\n','&lt;br /&gt;'))}"></div>
+            </tr>
+        </div>
+    </div>
+</div>
+
+<!--Footer Fragment-->
+<div th:insert="/page-fragments :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <!--Import Fragment-->
+    <div th:insert="/page-fragments :: imports"></div>
+    <title>News</title>
+</head>
+<body>
+
+<!--Header Fragment-->
+<div th:insert="/page-fragments :: header('news')"></div>
+
+<!--Body-->
+<div class="container">
+    <div class="product-page">
+        <h1 th:text="#{headline_news}"></h1>
+        <div th:if="${admin}" class="buttons">
+            <a href="/news-add" class="btn btn-success">Add News</a>
+        </div>
+        <th:block th:each="news : ${newsList}">
+            <th:block th:if="${news}">
+                <div class="card products news">
+                    <img th:src="${!news.imgPath.equals('') ? news.imgPath : 'images/product.png'}" alt="Image" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${news.title}"></h5>
+                        <p class="card-text" th:text="${news.description}">...</p>
+                        <a th:href="@{/newsArticle(id=${news.id})}" class="btn btn-primary">Read More...</a>
+                        <div th:if="${admin}">
+                            <a th:href="@{/news-edit(id=${news.id})}" class="btn btn-warning">Edit</a>
+                            <a th:href="@{/news-delete(id=${news.id})}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </th:block>
+    </div>
+</div>
+
+<!--Footer Fragment-->
+<div th:insert="/page-fragments :: footer"></div>
+
+</body>
+</html>

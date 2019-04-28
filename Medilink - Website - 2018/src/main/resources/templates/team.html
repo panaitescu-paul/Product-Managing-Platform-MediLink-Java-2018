@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <!--Import Fragment-->
+    <div th:insert="/page-fragments :: imports"></div>
+    <title>Team</title>
+</head>
+<body>
+
+<!--Header Fragment-->
+<div th:insert="/page-fragments :: header('team')"></div>
+
+<!--Body-->
+<div class="container">
+    <div class="team-page">
+        <h1 th:text="#{headline_team}"></h1>
+        <div class="card team">
+            <img class="card-img-top" src="images/team-1.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Christian</h5>
+                <p class="card-text">Adm Director</p>
+            </div>
+        </div>
+        <div class="card team">
+            <img class="card-img-top" src="images/team-2.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Cristina</h5>
+                <p class="card-text">RA Director</p>
+            </div>
+        </div>
+        <div class="card team">
+            <img class="card-img-top" src="images/team-3.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Dragos</h5>
+                <p class="card-text">IT Responsible</p>
+            </div>
+        </div>
+        <div class="card team">
+            <img class="card-img-top" src="images/team-3.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Daniel</h5>
+                <p class="card-text">Business Developer</p>
+            </div>
+        </div>
+        <div class="card team">
+            <img class="card-img-top" src="images/team-1.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Alex</h5>
+                <p class="card-text">Customer Service</p>
+            </div>
+        </div>
+        <div class="card team">
+            <img class="card-img-top" src="images/team-2.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Sandra</h5>
+                <p class="card-text">Quality Assistant</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Footer Fragment-->
+<div th:insert="/page-fragments :: footer"></div>
+
+</body>
+</html>

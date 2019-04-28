@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <!--Import Fragment-->
+    <div th:insert="/page-fragments :: imports"></div>
+    <title>Login</title>
+</head>
+<body>
+
+<!--Body-->
+<div class="container">
+    <div class="login-page">
+        <h1>Login as Admin:</h1>
+        <div class="login center">
+            <form action="/login" method="post">
+                <p>Password</p>
+                <input type="password" name="password" class="form-control login-custom">
+                <button class="btn btn-primary" type="submit">Login</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
