@@ -1,4 +1,4 @@
-# Medilink Website - 2018
+# Product Managing Platform - MediLink - Java - 2018
 ### Redesign for a Danish family-owned Pharmaceutical Company
 
 ### Features:
